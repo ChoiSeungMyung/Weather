@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="weatherData"
+            type="com.victoryzzi.android.apps.idus.data.model.WeatherItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite100">
+
+        <TextView
+            android:id="@+id/item_weather_local_title"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_chart_row"
+            android:gravity="center"
+            android:text="@{weatherData.locationName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="San Jose" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_weather_today"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_chart_row"
+            app:layout_constraintEnd_toStartOf="@id/item_weather_tomorrow"
+            app:layout_constraintStart_toEndOf="@id/item_weather_local_title">
+
+            <ImageView
+                android:id="@+id/item_weather_today_abbr"
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_1"
+                android:layout_marginBottom="@dimen/dp_1"
+                android:background="@color/colorWhite100"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/sn" />
+
+            <TextView
+                android:id="@+id/item_weather_today_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:textColor="@color/colorBlack100"
+                android:textSize="@dimen/sp_14"
+                android:text="@{weatherData.weatherList.get(0).weatherStateName}"
+                app:layout_constraintBottom_toTopOf="@id/item_weather_today_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/item_weather_today_abbr"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Heavy Rain" />
+
+            <TextView
+                android:id="@+id/item_weather_today_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTempRed"
+                android:textSize="@dimen/sp_12"
+                android:text="@{weatherData.weatherList.get(0).getWeatherTemp}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/item_weather_today_state"
+                app:layout_constraintTop_toBottomOf="@id/item_weather_today_state"
+                tools:text="4℃" />
+
+            <TextView
+                android:id="@+id/item_weather_today_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack100"
+                android:textSize="@dimen/sp_12"
+                android:text="@{weatherData.weatherList.get(0).getWeatherHumidity}"
+                app:layout_constraintBottom_toBottomOf="@id/item_weather_today_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/item_weather_today_temp"
+                app:layout_constraintTop_toTopOf="@id/item_weather_today_temp"
+                tools:text="65%" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_weather_tomorrow"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_chart_row"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_weather_today">
+
+            <ImageView
+                android:id="@+id/item_weather_tomorrow_abbr"
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_1"
+                android:layout_marginBottom="@dimen/dp_1"
+                android:background="@color/colorWhite100"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/sn" />
+
+            <TextView
+                android:id="@+id/item_weather_tomorrow_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:textColor="@color/colorBlack100"
+                android:textSize="@dimen/sp_14"
+                android:text="@{weatherData.weatherList.get(1).weatherStateName}"
+                app:layout_constraintBottom_toTopOf="@id/item_weather_tomorrow_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/item_weather_tomorrow_abbr"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Heavy Rain" />
+
+            <TextView
+                android:id="@+id/item_weather_tomorrow_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTempRed"
+                android:textSize="@dimen/sp_12"
+                android:text="@{weatherData.weatherList.get(1).getWeatherTemp}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/item_weather_tomorrow_state"
+                app:layout_constraintTop_toBottomOf="@id/item_weather_tomorrow_state"
+                tools:text="4℃" />
+
+            <TextView
+                android:id="@+id/item_weather_tomorrow_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack100"
+                android:textSize="@dimen/sp_12"
+                android:text="@{weatherData.weatherList.get(1).getWeatherHumidity}"
+                app:layout_constraintBottom_toBottomOf="@id/item_weather_tomorrow_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/item_weather_tomorrow_temp"
+                app:layout_constraintTop_toTopOf="@id/item_weather_tomorrow_temp"
+                tools:text="65%" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Idus</string>
+
+    <!-- Weather Title   -->
+    <string name="local_weather_title">Local Weather</string>
+    <string name="local_title">Local</string>
+    <string name="today_title">Today</string>
+    <string name="tomorrow_title">Tomorrow</string>
+
+    <!--   SnackBar Message -->
+    <string name="toast_check_connectivity">Please check the Internet connection status</string>
+</resources>
